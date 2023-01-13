@@ -1,6 +1,6 @@
 from qtpy.QtGui import QPixmap
 
-from .resources import qInitResources
+from napari_hierarchical.widgets.resources.resources import qInitResources
 
 qInitResources()
 

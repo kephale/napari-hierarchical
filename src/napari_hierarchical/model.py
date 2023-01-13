@@ -4,7 +4,7 @@ from napari.layers import Layer
 from napari.utils.events import Event
 from pydantic import Field
 
-from .utils.parent_aware import (
+from napari_hierarchical.utils.parent_aware import (
     NestedParentAwareEventedModel,
     NestedParentAwareEventedModelList,
     ParentAwareEventedDict,

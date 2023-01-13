@@ -3,7 +3,7 @@ from contextlib import contextmanager
 from napari.viewer import current_viewer
 from s3fs import S3FileSystem
 
-from .._controller import controller
+from napari_hierarchical._controller import controller
 
 s3_endpoint_url = "https://uk1s3.embassy.ebi.ac.uk"
 url = "s3://idr/zarr/v0.4/idr0052A/5514375.zarr"

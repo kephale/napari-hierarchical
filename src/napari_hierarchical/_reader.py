@@ -1,6 +1,6 @@
 from napari.viewer import current_viewer
 
-from ._controller import controller
+from napari_hierarchical._controller import controller
 
 
 def napari_get_reader(path):

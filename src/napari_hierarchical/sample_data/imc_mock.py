@@ -6,7 +6,7 @@ from urllib.request import urlopen
 
 from napari.viewer import current_viewer
 
-from .._controller import controller
+from napari_hierarchical._controller import controller
 
 url = (
     "https://github.com/BodenmillerGroup/TestData/raw/main/datasets"

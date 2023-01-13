@@ -13,9 +13,9 @@ from qtpy.QtWidgets import (
     QWidget,
 )
 
-from .._controller import controller
-from ..model import Group
-from ._group_tree_view import QGroupTreeView
+from napari_hierarchical._controller import controller
+from napari_hierarchical.model import Group
+from napari_hierarchical.widgets._group_tree_view import QGroupTreeView
 
 logger = logging.getLogger(__name__)
 

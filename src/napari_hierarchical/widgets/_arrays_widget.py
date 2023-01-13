@@ -14,9 +14,9 @@ from qtpy.QtWidgets import (
     QWidget,
 )
 
-from .._controller import controller
-from ..model import Array
-from ._flat_groupings_tab_widget import QFlatGroupingsTabWidget
+from napari_hierarchical._controller import controller
+from napari_hierarchical.model import Array
+from napari_hierarchical.widgets._flat_groupings_tab_widget import QFlatGroupingsTabWidget
 
 logger = logging.getLogger(__name__)
 

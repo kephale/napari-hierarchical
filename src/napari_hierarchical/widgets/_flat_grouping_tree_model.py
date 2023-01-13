@@ -5,9 +5,9 @@ from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional, Seque
 from napari.utils.events import Event, EventedDict, EventedList
 from qtpy.QtCore import QAbstractItemModel, QModelIndex, QObject, Qt
 
-from .._controller import HierarchicalController
-from ..model import Array
-from ..utils.parent_aware import ParentAware
+from napari_hierarchical._controller import HierarchicalController
+from napari_hierarchical.model import Array
+from napari_hierarchical.utils.parent_aware import ParentAware
 
 logger = logging.getLogger(__name__)
 

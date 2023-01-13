@@ -11,11 +11,11 @@ from qtpy.QtCore import (
 )
 from qtpy.QtWidgets import QFileDialog, QHeaderView, QMenu, QTreeView, QWidget
 
-from .._controller import HierarchicalController
-from ..model import Group
-from ._group_tree_model import QGroupTreeModel
-from .resources import get_pixmap
-from .utils import QIconCheckboxDelegate
+from napari_hierarchical._controller import HierarchicalController
+from napari_hierarchical.model import Group
+from napari_hierarchical.widgets._group_tree_model import QGroupTreeModel
+from napari_hierarchical.widgets.resources import get_pixmap
+from napari_hierarchical.widgets.utils import QIconCheckboxDelegate
 
 logger = logging.getLogger(__name__)
 

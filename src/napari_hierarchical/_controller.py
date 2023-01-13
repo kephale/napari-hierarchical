@@ -11,10 +11,10 @@ from napari.utils.events import Event, EventedList, SelectableEventedList
 from napari.viewer import Viewer
 from pluggy import PluginManager
 
-from . import hookspecs
-from .model import Array, Group
-from .utils.parent_aware import ParentAware
-from .utils.proxy_image import ProxyImage
+from napari_hierarchical import hookspecs
+from napari_hierarchical.model import Array, Group
+from napari_hierarchical.utils.parent_aware import ParentAware
+from napari_hierarchical.utils.proxy_image import ProxyImage
 
 PathLike = Union[str, os.PathLike]
 

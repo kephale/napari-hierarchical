@@ -1,15 +1,15 @@
 try:
-    from ._version import version as __version__
+    from napari_hierarchical._version import version as __version__
 except ImportError:
     __version__ = "unknown"
 
-from ._controller import (
+from napari_hierarchical._controller import (
     HierarchicalController,
     HierarchicalControllerException,
     controller,
 )
-from ._reader import napari_get_reader
-from .contrib import hdf5, imc, zarr
+from napari_hierarchical._reader import napari_get_reader
+from napari_hierarchical.contrib import hdf5, imc, zarr
 
 if hdf5.available:
     controller.pm.register(hdf5, name="napari-hierarchical-hdf5")

@@ -3,7 +3,7 @@ from typing import Callable, Optional, Union
 
 from pluggy import HookspecMarker
 
-from .model import Array, Group
+from napari_hierarchical.model import Array, Group
 
 PathLike = Union[str, os.PathLike]
 GroupReaderFunction = Callable[[PathLike], Group]

@@ -5,11 +5,11 @@ from napari.utils.events import Event
 from qtpy.QtCore import QItemSelection, QPoint, QSortFilterProxyModel, Qt
 from qtpy.QtWidgets import QHeaderView, QMenu, QTreeView, QWidget
 
-from .._controller import HierarchicalController
-from ..model import Array
-from ._flat_grouping_tree_model import Arrays, QFlatGroupingTreeModel
-from .resources import get_pixmap
-from .utils import QIconCheckboxDelegate
+from napari_hierarchical._controller import HierarchicalController
+from napari_hierarchical.model import Array
+from napari_hierarchical.widgets._flat_grouping_tree_model import Arrays, QFlatGroupingTreeModel
+from napari_hierarchical.widgets.resources import get_pixmap
+from napari_hierarchical.widgets.utils import QIconCheckboxDelegate
 
 logger = logging.getLogger(__name__)
 

@@ -4,9 +4,9 @@ from typing import Dict, List, Optional
 from napari.utils.events import Event
 from qtpy.QtWidgets import QTabWidget, QWidget
 
-from .._controller import HierarchicalController
-from ..model import Array
-from ._flat_grouping_tree_view import QFlatGroupingTreeView
+from napari_hierarchical._controller import HierarchicalController
+from napari_hierarchical.model import Array
+from napari_hierarchical.widgets._flat_grouping_tree_view import QFlatGroupingTreeView
 
 logger = logging.getLogger(__name__)
 
