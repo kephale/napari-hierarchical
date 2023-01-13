@@ -11,6 +11,12 @@ from .model import ZarrArray
 try:
     import dask.array as da
     import zarr
+
+    from ome_zarr.io import parse_url
+    from ome_zarr.reader import Label, Node, Reader
+    from napari_ome_zarr._reader import transform
+
+    from napari.viewer import current_viewer
 except ModuleNotFoundError:
     pass
 
@@ -18,17 +24,45 @@ PathLike = Union[str, os.PathLike]
 
 
 def read_zarr_group(path: PathLike) -> Group:
-    z = zarr.open(store=str(path), mode="r")
-    if isinstance(z, zarr.Array):
-        group = Group(name=Path(path).name)
-        array = _read_zarr_array(str(path), [], z)
-        group.arrays.append(array)
-    elif isinstance(z, zarr.Group):
-        group = _read_zarr_group(str(path), [], z, name=Path(path).name)
-    else:
-        raise TypeError(f"Unsupported Zarr type: {type(z)}")
-    group.commit()
-    return group
+    # z = zarr.open(store=str(path), mode="r")
+    z = parse_url(path)
+    if z:
+        reader = Reader(z)
+        result = transform(reader())
+        # napari_ome_zarr.transform() returns List[LayerData]
+
+        groups = []
+        for datas, metadata, layer_type in result():
+            # Loop over arrays for this node
+            group = Group(name=Path(path).name)
+            for data in datas:
+                layer = None
+                if layer_type == "image":
+                    layer = Image(data, visible=False)
+                    current_viewer().add_layer(layer)
+                    # TODO apply metadata
+
+                array_name = f"{Path(path).name}/{data}"
+                    
+                array = Array(name=array_name, layer=layer)
+                
+                group.arrays.append(array)
+            group.commit()
+            groups.append(group)
+        return groups[0]
+    return None
+                
+                
+    # if isinstance(z, zarr.Array):
+    #     group = Group(name=Path(path).name)
+    #     array = _read_zarr_array(str(path), [], z)
+    #     group.arrays.append(array)
+    # elif isinstance(z, zarr.Group):
+    #     group = _read_zarr_group(str(path), [], z, name=Path(path).name)
+    # else:
+    #     raise TypeError(f"Unsupported Zarr type: {type(z)}")
+    # group.commit()
+    # return group
 
 
 def load_zarr_array(array: Array) -> None:

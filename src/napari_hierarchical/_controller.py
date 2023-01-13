@@ -16,6 +16,8 @@ from napari_hierarchical.model import Array, Group
 from napari_hierarchical.utils.parent_aware import ParentAware
 from napari_hierarchical.utils.proxy_image import ProxyImage
 
+from napari_ome_zarr._reader import napari_get_reader as ome_napari_get_reader
+
 PathLike = Union[str, os.PathLike]
 
 logger = logging.getLogger(__name__)
@@ -127,6 +129,7 @@ class HierarchicalController:
             )
         logger.debug(f"array={array}")
         array_loader_function = self._get_array_loader_function(array)
+        import pdb; pdb.set_trace()
         if array_loader_function is None:
             raise HierarchicalControllerException(f"No array loader found for {array}")
         try:
@@ -179,6 +182,7 @@ class HierarchicalController:
     def _get_group_reader_function(
         self, path: PathLike
     ) -> Optional[hookspecs.GroupReaderFunction]:
+        # return ome_napari_get_reader
         return self._pm.hook.napari_hierarchical_get_group_reader(path=path)
 
     def _get_group_writer_function(
@@ -191,7 +195,8 @@ class HierarchicalController:
     def _get_array_loader_function(
         self, array: Array
     ) -> Optional[hookspecs.ArrayLoaderFunction]:
-        return self._pm.hook.napari_hierarchical_get_array_loader(array=array)
+        return ome_napari_get_reader
+        # return self._pm.hook.napari_hierarchical_get_array_loader(array=array)
 
     def _get_array_saver_function(
         self, array: Array
